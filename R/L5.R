@@ -16,3 +16,23 @@ use_git()
 # 1. Create a .git directory
 # 2. Make an initial commit
 # 3. Potentially restart RStudio
+
+# Create a GitHub repository and push
+use_github()
+
+# This will:
+# 1. Create a new repo on GitHub
+# 2. Add the remote
+# 3. Push your initial commit
+
+# If this doesn't work, you can create the repo manually on GitHub
+# and then add the remote via the terminal:
+# git remote add origin https://github.com/your-username/ADS8192.git
+# git push -u origin main
+
+# MIT License is a good default for open source
+use_mit_license()
+
+# This adds:
+# - LICENSE.md file
+# - License field in DESCRIPTION
