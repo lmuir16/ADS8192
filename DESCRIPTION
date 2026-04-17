@@ -3,7 +3,7 @@ Title: ADS 8192 Gene Correlation Network Tool
 Version: 0.0.0.9000
 Authors@R:
     person("Liane", "Muir", email = "liane.muir@stjude.org", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(ORCID = "0009-0002-5250-0464"))
 Description: Provides functions to build and analyze gene co-expression networks
     from bulk RNA-seq data. Includes tools for selecting the most variable genes,
     computing pairwise gene-gene correlation matrices, and thresholding correlations
@@ -15,13 +15,18 @@ Description: Provides functions to build and analyze gene co-expression networks
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Imports: 
     ComplexHeatmap,
     ggplot2,
+    grid,
     igraph,
-    recount3,
-    SummarizedExperiment
+    SummarizedExperiment,
+    tools
 Suggests: 
     knitr,
+    recount3,
     testthat
+Depends: 
+    R (>= 3.5)
+LazyData: true
