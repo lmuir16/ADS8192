@@ -2,6 +2,8 @@
 output: github_document
 ---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -14,8 +16,9 @@ knitr::opts_chunk$set(
 # ADS8192
 
 <!-- badges: start -->
-  [![pkgdown](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml)
-  <!-- badges: end -->
+[![R-CMD-check](https://github.com/lmuir16/ADS8192/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml)
+<!-- badges: end -->
 
 ADS8192 provides a lightweight pipeline for building and analyzing gene
 co-expression networks from bulk RNA-seq data. Starting from a
@@ -25,12 +28,25 @@ visualization, and export.
 
 ## Installation
 
-You can install the development version of ADS8192 from
-[GitHub](https://github.com/lmuir16/ADS8192) with:
+ADS8192 requires several Bioconductor dependencies. Install them first:
 
 ```r
-# install.packages("pak")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c("SummarizedExperiment", "recount3"))
+```
+
+Then install ADS8192 from GitHub:
+
+```r
+# Using pak (recommended)
+install.packages("pak")
 pak::pak("lmuir16/ADS8192")
+
+# Or using devtools
+install.packages("devtools")
+devtools::install_github("lmuir16/ADS8192")
 ```
 
 ## Quick Start
@@ -41,13 +57,13 @@ library(ADS8192)
 # Load example GTEx skeletal muscle data
 data(example_se)
 
-# Prepare expression matrix
-se_top <- top_variable_features(example_se, n = 500)
+# Use a small subset for a quick demonstration
+se_top <- top_variable_features(example_se[1:100, 1:50], n = 50)
 mat    <- prepare_expression_matrix(se_top)
 
 # Build network
 cor_mat <- pairwise_corr(mat)
-adj_mat <- build_adjacency_mat(cor_mat, cor_threshold = 0.7)
+adj_mat <- build_adjacency_mat(cor_mat, cor_threshold = 0.3)
 net     <- build_network(adj_mat)
 
 # Detect modules and summarize
@@ -55,7 +71,7 @@ gene_mods   <- detect_network_modules(net)
 net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
 
 # Identify hub genes
-hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 20)
+hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 10)
 head(hub_genes)
 ```
 

@@ -17,9 +17,6 @@ visualization, and export.
 
 ## Installation
 
-You can install the development version of ADS8192 from
-[GitHub](https://github.com/lmuir16/ADS8192).
-
 ADS8192 requires several Bioconductor dependencies. Install them first:
 
 ``` r
@@ -32,7 +29,7 @@ BiocManager::install(c("SummarizedExperiment", "recount3"))
 Then install ADS8192 from GitHub:
 
 ``` r
-# Using pak
+# Using pak (recommended)
 install.packages("pak")
 pak::pak("lmuir16/ADS8192")
 
