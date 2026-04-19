@@ -10,13 +10,13 @@ detect_network_modules(network, community_method = "louvain")
 \item{network}{A network object output by build_network()}
 
 \item{community_method}{Community detection method: "louvain" or "walktrap"
-(default: "louvain")}
+(default: "louvain").}
 }
 \value{
 A list containing:
 \describe{
 \item{community}{An igraph community object}
-\item{modules}{A named integer vector mapping genes to module IDs}
+\item{modules}{A named numeric vector mapping genes to module IDs}
 \item{modularity}{A numeric modularity score}
 \item{module_df}{A data frame of gene-module assignments with node-level metadata (e.g. degree)}
 }

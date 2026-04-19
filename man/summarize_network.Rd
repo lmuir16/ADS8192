@@ -9,7 +9,7 @@ summarize_network(network, modules, modularity_score)
 \arguments{
 \item{network}{A network object output by build_network()}
 
-\item{modules}{A named integer vector of module assignments}
+\item{modules}{A named numeric vector of module assignments}
 
 \item{modularity_score}{A numeric modularity score}
 }

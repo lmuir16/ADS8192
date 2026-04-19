@@ -4,13 +4,10 @@
 \alias{build_network}
 \title{Build network from adjacency matrix and compute node-level statistics}
 \usage{
-build_network(adj_mat, graph_mode = "undirected")
+build_network(adj_mat)
 }
 \arguments{
 \item{adj_mat}{A square binary adjacency matrix (genes x genes)}
-
-\item{graph_mode}{How igraph should interpret the adjacency matrix
-(default: "undirected")}
 }
 \value{
 A list containing:

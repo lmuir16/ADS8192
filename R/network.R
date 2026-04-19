@@ -1,8 +1,7 @@
 # R/network.R
 
 # TO DO:
-# options for optional arguments -- add to documentation (keep directed graph op?)
-#
+# Add intro to pkgdown
 
 #' Pairwise correlation matrix
 #'

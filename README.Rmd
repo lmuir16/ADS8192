@@ -1,0 +1,65 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ADS8192
+
+<!-- badges: start -->
+  [![pkgdown](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml)
+  <!-- badges: end -->
+
+ADS8192 provides a lightweight pipeline for building and analyzing gene
+co-expression networks from bulk RNA-seq data. Starting from a
+`SummarizedExperiment` object, the package supports the full workflow
+from data preparation through network construction, module detection,
+visualization, and export.
+
+## Installation
+
+You can install the development version of ADS8192 from
+[GitHub](https://github.com/lmuir16/ADS8192) with:
+
+```r
+# install.packages("pak")
+pak::pak("lmuir16/ADS8192")
+```
+
+## Quick Start
+
+```{r example}
+library(ADS8192)
+
+# Load example GTEx skeletal muscle data
+data(example_se)
+
+# Prepare expression matrix
+se_top <- top_variable_features(example_se, n = 500)
+mat    <- prepare_expression_matrix(se_top)
+
+# Build network
+cor_mat <- pairwise_corr(mat)
+adj_mat <- build_adjacency_mat(cor_mat, cor_threshold = 0.7)
+net     <- build_network(adj_mat)
+
+# Detect modules and summarize
+gene_mods   <- detect_network_modules(net)
+net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
+
+# Identify hub genes
+hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 20)
+head(hub_genes)
+```
+
+## Learn More
+
+See `vignette("getting-started", package = "ADS8192")` for a full
+walkthrough of the pipeline.
