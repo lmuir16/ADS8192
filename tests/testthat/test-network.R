@@ -55,7 +55,11 @@ test_that("build_adjacency_mat diagonal is zero", {
 })
 
 test_that("build_adjacency_mat higher threshold produces fewer edges", {
-  adj_low  <- build_adjacency_mat(cor_mat, cor_threshold = 0.2)
+
+  # Warning expected for high network density but not relevant for this test
+  adj_low  <- suppressWarnings(
+    build_adjacency_mat(cor_mat, cor_threshold = 0.2)
+  )
   adj_high <- build_adjacency_mat(cor_mat, cor_threshold = 0.8)
   expect_gt(sum(adj_low), sum(adj_high))
 })

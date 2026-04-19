@@ -1,8 +1,9 @@
-# tests/testthat/test-dataprep.R
+# tests/testthat/test-data_prep.R
 # Tests for data preparation functions
 #
 # Shared fixture using a subset of example_se (real GTEx data)
 
+library(SummarizedExperiment)
 data(example_se)
 se <- example_se[1:50, 1:30]
 
