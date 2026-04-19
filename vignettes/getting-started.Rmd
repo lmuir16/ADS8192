@@ -1,0 +1,209 @@
+---
+title: "Getting Started with ADS8192"
+output: rmarkdown::html_vignette
+author: "Liane Muir"
+vignette: >
+  %\VignetteIndexEntry{Getting Started with ADS8192}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+ADS8192 provides a lightweight pipeline for building and analyzing gene
+co-expression networks from bulk RNA-seq data. Starting from a
+`SummarizedExperiment` object, the package supports the full workflow from
+data preparation through network construction, module detection,
+visualization, and export.
+
+Let's see what the complete pipeline looks like...
+
+## Installation
+
+```{r install, eval=FALSE}
+# Install from GitHub
+devtools::install_github("yourusername/ADS8192")
+```
+
+## Data Preparation
+
+The package includes `example_se`, a `SummarizedExperiment` containing GTEx
+skeletal muscle bulk RNA-seq data for 2000 genes across 200 samples.
+
+```{r load}
+library(ADS8192)
+
+data(example_se)
+example_se
+```
+
+Before building a network, we select the most variable genes and prepare a
+log-normalized expression matrix. Working with the top variable genes keeps
+pairwise correlation computation tractable and focuses the network on
+biologically informative signal.
+
+```{r dataprep}
+# Select top 500 most variable genes
+se_top <- top_variable_features(example_se, n = 500)
+
+# Optionally subset to a random sample of donors for faster computation
+set.seed(42)
+se_sub <- select_random_samples(se_top, n = 200)
+
+# Log2-normalize counts and remap Ensembl IDs to HGNC gene symbols
+mat <- prepare_expression_matrix(se_sub)
+
+dim(mat)
+mat[1:5, 1:3]
+```
+
+## Computing Gene-Gene Correlations
+
+With the expression matrix prepared, we compute pairwise Pearson correlations
+across all gene pairs. This produces a symmetric genes x genes matrix where
+each entry reflects the co-expression strength between two genes.
+
+```{r correlation}
+cor_mat <- pairwise_corr(mat, cor_method = "pearson")
+
+dim(cor_mat)
+cor_mat[1:5, 1:5]
+```
+
+## Building the Adjacency Matrix
+
+We threshold the correlation matrix into a binary adjacency matrix. Gene pairs
+with absolute correlation at or above `cor_threshold` are connected by an edge.
+Choosing an appropriate threshold is important — too high produces a sparse
+disconnected network, too low produces a dense uninformative one. A threshold
+of 0.7 is a common starting point for bulk RNA-seq co-expression networks.
+
+```{r adjacency}
+adj_mat <- build_adjacency_mat(cor_mat, cor_threshold = 0.7)
+
+# Proportion of possible edges retained
+sum(adj_mat) / (nrow(adj_mat) * (nrow(adj_mat) - 1))
+```
+
+## Constructing the Network
+
+The adjacency matrix is passed to `build_network()`, which constructs an
+igraph object and computes per-gene degree and betweenness centrality.
+
+- **Degree** — the number of other genes a gene is correlated with above the
+  threshold. High-degree genes are candidates for hub genes.
+- **Betweenness centrality** — how often a gene lies on the shortest path
+  between other gene pairs. High betweenness genes act as bridges between
+  co-expression modules.
+
+```{r network}
+net <- build_network(adj_mat)
+
+# Preview degree distribution
+summary(net$degree)
+```
+
+## Detecting Gene Modules
+
+Gene modules are groups of highly interconnected genes that likely share
+biological function. We use the Louvain algorithm for community detection,
+which optimizes modularity — a measure of how well-separated the modules are.
+
+```{r modules}
+gene_mods <- detect_network_modules(net, community_method = "louvain")
+
+# Modularity score — higher values indicate clearer module structure
+gene_mods$modularity
+
+# Number of modules detected
+length(unique(gene_mods$modules))
+
+# Preview module assignments
+head(gene_mods$module_df)
+```
+
+## Summarizing the Network
+
+`summarize_network()` returns a data frame of global network statistics,
+including total edge count, mean degree, hub gene count, and modularity.
+
+```{r summary}
+net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
+```
+
+## Identifying Hub Genes
+
+Hub genes are the most highly connected genes in the network. They often
+correspond to master regulators or genes central to the biological processes
+captured by the co-expression structure.
+
+```{r hubs}
+hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 20)
+head(hub_genes)
+```
+
+## Visualization
+
+### Correlation Heatmap
+
+The correlation heatmap shows pairwise gene-gene correlations with hierarchical
+clustering, revealing block structure that corresponds to co-expression modules.
+
+```{r heatmap, fig.width=7, fig.height=6}
+plot_corr_map(cor_mat, cor_method = "pearson")
+```
+
+### Force-Directed Network Graph
+
+The network plot shows the top hub genes as nodes sized by degree and colored
+by module, with the top 20 hub genes labeled by gene symbol.
+
+```{r network-plot, fig.width=8, fig.height=7}
+plot_network(net,
+             modules        = gene_mods$modules,
+             n_top          = 80,
+             cor_threshold  = 0.7,
+             community_method = "louvain")
+```
+
+## Exporting Results
+
+All results can be exported to TSV files for downstream analysis or reporting.
+Six files are written to a temporary directory by default.
+
+```{r export}
+exported_files <- net_export(
+  cor_mat,
+  net,
+  net_summary,
+  gene_mods$modules,
+  gene_mods$module_df,
+  cor_threshold = 0.7
+)
+
+exported_files
+```
+
+The exported files are:
+
+- `gene_correlations.tsv` — all gene pairs above the correlation threshold
+- `network_summary.tsv` — global network statistics
+- `hub_genes.tsv` — top 20 hub genes ranked by degree
+- `module_assignments.tsv` — module membership for all genes
+- `node_stats.tsv` — degree, betweenness, and module for every gene
+- `module_summary.tsv` — per-module size, mean degree, and top hub gene
+
+And that's that!
+
+## Session Info
+
+```{r sessioninfo}
+sessionInfo()
+```
