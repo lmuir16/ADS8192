@@ -1,5 +1,9 @@
 # R/network.R
 
+# TO DO:
+# options for optional arguments -- add to documentation (keep directed graph op?)
+#
+
 #' Pairwise correlation matrix
 #'
 #' Computes pairwise correlations between genes (rows) across samples (columns)
@@ -49,8 +53,30 @@ pairwise_corr <- function(mat, cor_method = "pearson") {
 #' adj_mat <- build_adjacency_mat(cor_mat, cor_threshold=0.7)
 
 build_adjacency_mat <- function(cor_mat, cor_threshold = 0.7) {
+
+  # Input checks
+  if (!is.matrix(cor_mat)) {
+    stop("cor_mat must be a matrix")
+  }
+
+  if (nrow(cor_mat) != ncol(cor_mat)) {
+    stop("cor_mat must be square.")
+  }
+
   adj_mat <- (abs(cor_mat) >= cor_threshold) * 1
   diag(adj_mat) <- 0
+
+  # Degenerate network check
+  if (all(adj_mat == 0)) {
+    warning("No edges detected: threshold may be too high.")
+  }
+
+  n <- nrow(adj_mat)
+  density <- sum(adj_mat) / (n * (n - 1))
+  if (density > 0.5) {
+    warning(paste0("Network density is ", round(density, 2),
+                   ": threshold may be too low for meaningful community detection."))
+  }
 
   return(adj_mat)
 }
@@ -61,8 +87,6 @@ build_adjacency_mat <- function(cor_mat, cor_threshold = 0.7) {
 #' (degree and betweenness) for downstream analysis.
 #'
 #' @param adj_mat A square binary adjacency matrix (genes x genes)
-#' @param graph_mode How igraph should interpret the adjacency matrix
-#'    (default: "undirected")
 #'
 #' @return A list containing:
 #' \describe{
@@ -81,7 +105,7 @@ build_adjacency_mat <- function(cor_mat, cor_threshold = 0.7) {
 #' adj_mat <- build_adjacency_mat(cor_mat)
 #' net <- build_network(adj_mat)
 
-build_network <- function(adj_mat, graph_mode = "undirected") {
+build_network <- function(adj_mat) {
 
   # Input check for adjacency matrix
   if (!is.matrix(adj_mat) || nrow(adj_mat) != ncol(adj_mat)) {
@@ -89,7 +113,7 @@ build_network <- function(adj_mat, graph_mode = "undirected") {
   }
 
   # Construct igraph network
-  g <- graph_from_adjacency_matrix(adj_mat, mode = graph_mode)
+  g <- graph_from_adjacency_matrix(adj_mat, mode = "undirected")
 
   list(
     graph = g,
@@ -106,12 +130,12 @@ build_network <- function(adj_mat, graph_mode = "undirected") {
 #'
 #' @param network A network object output by build_network()
 #' @param community_method Community detection method: "louvain" or "walktrap"
-#'    (default: "louvain")
+#'    (default: "louvain").
 #'
 #' @return A list containing:
 #' \describe{
 #'   \item{community}{An igraph community object}
-#'   \item{modules}{A named integer vector mapping genes to module IDs}
+#'   \item{modules}{A named numeric vector mapping genes to module IDs}
 #'   \item{modularity}{A numeric modularity score}
 #'   \item{module_df}{A data frame of gene-module assignments with node-level metadata (e.g. degree)}
 #' }
@@ -190,7 +214,7 @@ detect_network_modules <- function(network, community_method = "louvain") {
 #' Summarize global network properties
 #'
 #' @param network A network object output by build_network()
-#' @param modules A named integer vector of module assignments
+#' @param modules A named numeric vector of module assignments
 #' @param modularity_score A numeric modularity score
 #'
 #'
@@ -242,7 +266,7 @@ summarize_network <- function(network, modules, modularity_score) {
 #' Rank genes by degree and extract top \code{n} hub genes from network
 #'
 #' @param network A network object output by build_network()
-#' @param modules A named integer vector of module assignments
+#' @param modules A named numeric vector of module assignments
 #' @param n Number of top hub genes to return (default: 20)
 #'
 #' @return A data frame of hub genes ranked by degree (highest to lowest)
