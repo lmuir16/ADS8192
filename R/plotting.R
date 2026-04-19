@@ -24,6 +24,12 @@ utils::globalVariables(c("x", "y", "xend", "yend", "degree", "module", "is_hub",
 #' ht <- plot_corr_map(cor_mat, cor_method = "pearson")
 
 plot_corr_map <- function(cor_mat, cor_method = "pearson") {
+
+  # Input check
+  if (!is.matrix(cor_mat)) {
+    stop("cor_mat must be a matrix")
+  }
+
   ht <- Heatmap(cor_mat, name = paste0(tools::toTitleCase(cor_method), " r"),
                 show_row_names = FALSE, show_column_names = FALSE,
                 column_title = paste0("Gene-Gene Correlation (top ",
@@ -141,7 +147,7 @@ plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
     geom_label(data = subset(node_df, is_hub),
                aes(x = x, y = y, label = gene),
                size = 2.5, label.padding = unit(0.15, "lines"),
-               label.size = 0.2, alpha = 0.85) +
+               linewidth = 0.2, alpha = 0.85) +
     scale_size_continuous(range = c(2, 8), name = "Degree") +
     scale_color_brewer(palette = "Set2", name = "Module") +
     theme_void() +
