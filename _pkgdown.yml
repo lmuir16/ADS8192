@@ -1,0 +1,39 @@
+url: https://lmuir16.github.io/ADS8192/
+template:
+  bootstrap: 5
+  bootswatch: lux
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+
+reference:
+  - title: "Data Preparation"
+    desc: "Functions for loading and preparing expression data"
+    contents:
+      - top_variable_features
+      - select_random_samples
+      - prepare_expression_matrix
+  - title: "Network Construction"
+    desc: "Functions for building and analyzing co-expression networks"
+    contents:
+      - pairwise_corr
+      - build_adjacency_mat
+      - build_network
+      - detect_network_modules
+      - summarize_network
+      - get_hub_genes
+  - title: "Visualization"
+    desc: "Functions for plotting network results"
+    contents:
+      - plot_corr_map
+      - plot_network
+  - title: "Export"
+    desc: "Functions for exporting results to TSV files"
+    contents:
+      - net_export
+  - title: "Data"
+    desc: "Example datasets"
+    contents:
+      - example_se
+

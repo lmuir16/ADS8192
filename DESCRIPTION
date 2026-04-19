@@ -21,12 +21,17 @@ Imports:
     ggplot2,
     grid,
     igraph,
+    Rapp,
     SummarizedExperiment,
     tools
 Suggests: 
     knitr,
     recount3,
-    testthat
+    rmarkdown,
+    testthat (>= 3.0.0)
 Depends: 
     R (>= 3.5)
 LazyData: true
+Config/testthat/edition: 3
+URL: https://lmuir16.github.io/ADS8192/
+VignetteBuilder: knitr
