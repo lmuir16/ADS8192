@@ -42,7 +42,6 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
-          bioc-version: release
 
       - uses: r-lib/actions/check-r-package@v2
         with:

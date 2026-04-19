@@ -21,14 +21,15 @@ Imports:
     ggplot2,
     grid,
     igraph,
-    Rapp,
     SummarizedExperiment,
     tools
-Suggests: 
+Suggests:
     knitr,
+    Rapp,
     recount3,
     rmarkdown,
     testthat (>= 3.0.0)
+biocViews: GeneExpression, RNASeq, Network
 Depends: 
     R (>= 3.5)
 LazyData: true
