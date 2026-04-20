@@ -1,11 +1,20 @@
 url: https://lmuir16.github.io/ADS8192/
+
 template:
   bootstrap: 5
   bootswatch: lux
 
+home:
+  title: "ADS8192"
+  description: "Gene Co-expression Network Analysis"
+
 navbar:
   structure:
     left: [intro, reference, articles, news]
+  components:
+    intro:
+      text: Get Started
+      href: articles/getting-started.html
 
 reference:
   - title: "Data Preparation"
