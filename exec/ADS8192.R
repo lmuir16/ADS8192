@@ -54,6 +54,10 @@ switch(
     #| short: d
     community_method <- "louvain"
 
+    #| description: Number of hub genes to export
+    #| short: h
+    n_hubs <- 20L
+
     # Validation
 
     # required arguments (no default)
@@ -90,13 +94,14 @@ switch(
 
     # Export results
     exported <- net_export(
-      cor_mat = cor_mat,
-      network = net,
-      net_summary = net_summary,
-      modules = gene_mods$modules,
-      module_df = gene_mods$module_df,
+      cor_mat       = cor_mat,
       cor_threshold = cor_threshold,
-      output_dir = output
+      network       = net,
+      net_summary   = net_summary,
+      modules       = gene_mods$modules,
+      module_df     = gene_mods$module_df,
+      n_hubs        = n_hubs,
+      output_dir    = output
     )
 
     message("Huzzah! Analysis complete. ", length(exported),
@@ -194,6 +199,10 @@ switch(
     #| description: Number of top hub genes to plot
     #| short: k
     n_plot <- 80L
+
+    #| description: Number of top hub genes to label by gene symbol
+    #| short: l
+    n_label <- 20L
 
     # Validation
 

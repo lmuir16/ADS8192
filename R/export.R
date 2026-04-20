@@ -6,13 +6,14 @@
 #' module assignments, node statistics, and module summaries to TSV files
 #'
 #' @param cor_mat A gene-gene correlation matrix
-#' @param cor_threshold Correlation threshold used to define significant edges
-#'    (default: 0.7; should match the value passed to build_adjacency_mat())
 #' @param network A network object output by build_network()
 #' @param net_summary A data frame of global network statistics
 #' @param modules A named integer vector mapping genes to module IDs
 #' @param module_df A data frame of gene-module assignments
 #'    with node-level metadata (e.g. degree)
+#' @param cor_threshold Correlation threshold used to define significant edges
+#'    (default: 0.7; should match the value passed to build_adjacency_mat())
+#' @param n_hubs Number of top hub genes to export to hub_genes.tsv (default: 20)
 #' @param output_dir Directory to write TSV files to
 #'    (default: a "network_output" folder in the session temp directory)
 #'
@@ -30,11 +31,11 @@
 #' gene_mods <- detect_network_modules(net)
 #' net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
 #' network_results <- net_export(cor_mat, net, net_summary, gene_mods$modules,
-#'     gene_mods$module_df, cor_threshold = 0.7)
+#'     gene_mods$module_df, cor_threshold = 0.7, n_hubs = 10)
 
 net_export <- function(cor_mat, network, net_summary, modules,
-                       module_df, cor_threshold = 0.7,
-                       output_dir = file.path(tempdir(),"network_output")) {
+                       module_df, cor_threshold = 0.7, n_hubs = 20,
+                       output_dir = file.path(tempdir(), "network_output")) {
 
   # Input checks for network
   if (!is.list(network) || !inherits(network$graph, "igraph")) {
@@ -49,6 +50,14 @@ net_export <- function(cor_mat, network, net_summary, modules,
   if (is.null(network$betweenness)) {
     stop(paste0("network$betweenness is missing. ",
                 "Ensure network was created by build_network()."))
+  }
+
+  # Return all available genes if n_hub > n_genes (warning)
+  n_genes <- length(network$degree)
+  if (n_hubs > n_genes) {
+    warning(paste0("n_hubs (", n_hubs, ") exceeds the number of genes in the ",
+                   "network (", n_genes, "). Exporting all ", n_genes, " genes."))
+    n_hubs <- n_genes
   }
 
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
@@ -66,7 +75,7 @@ net_export <- function(cor_mat, network, net_summary, modules,
   g <- network$graph
   deg <- network$degree
   betw <- network$betweenness
-  hub_genes <- get_hub_genes(network, modules, n = 20)
+  hub_genes <- get_hub_genes(network, modules, n = n_hubs)
 
   write.table(cor_edges, file.path(output_dir, "gene_correlations.tsv"),
               sep = "\t", row.names = FALSE, quote = FALSE)

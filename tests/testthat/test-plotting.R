@@ -60,3 +60,22 @@ test_that("plot_network errors on missing network$degree", {
     "network\\$degree is missing"
   )
 })
+
+test_that("plot_network respects n_label parameter", {
+  result <- plot_network(net, modules = gene_mods$modules,
+                         n_top = 20, n_label = 5)
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("plot_network works with n_label = 0", {
+  result <- plot_network(net, modules = gene_mods$modules,
+                         n_top = 20, n_label = 0)
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("plot_network warns when n_label exceeds n_top", {
+  expect_warning(
+    plot_network(net, modules = gene_mods$modules, n_top = 20, n_label = 30),
+    "n_label"
+  )
+})

@@ -39,6 +39,14 @@ test_that("net_export errors on missing network$betweenness", {
   )
 })
 
+test_that("net_export warns when n_hubs exceeds network size", {
+  expect_warning(
+    net_export(cor_mat, net, net_summary, gene_mods$modules,
+               gene_mods$module_df, n_hubs = 999),
+    "n_hubs"
+  )
+})
+
 # ── Return value ──────────────────────────────────────────────────────────────
 
 test_that("net_export returns a character vector of file names", {
@@ -109,13 +117,22 @@ test_that("node_stats.tsv covers all genes in the network", {
   expect_equal(nrow(result), length(net$degree))
 })
 
-test_that("hub_genes.tsv contains exactly 20 rows", {
+test_that("hub_genes.tsv contains exactly 20 rows by default", {
   net_export(cor_mat, net, net_summary, gene_mods$modules,
              gene_mods$module_df)
   output_dir <- file.path(tempdir(), "network_output")
   result <- read.table(file.path(output_dir, "hub_genes.tsv"),
                        sep = "\t", header = TRUE)
   expect_equal(nrow(result), 20)
+})
+
+test_that("hub_genes.tsv respects n_hubs parameter", {
+  net_export(cor_mat, net, net_summary, gene_mods$modules,
+             gene_mods$module_df, n_hubs = 10)
+  output_dir <- file.path(tempdir(), "network_output")
+  result <- read.table(file.path(output_dir, "hub_genes.tsv"),
+                       sep = "\t", header = TRUE)
+  expect_equal(nrow(result), 10)
 })
 
 test_that("network_summary.tsv contains all expected metrics", {

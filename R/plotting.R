@@ -49,6 +49,7 @@ plot_corr_map <- function(cor_mat, cor_method = "pearson") {
 #' @param cor_threshold Correlation threshold used to define adjacency (default: 0.70)
 #' @param community_method Community detection method used to detect modules
 #'   (default: "louvain")
+#' @param n_label Number of top hub genes to label by gene symbol (default: 20)
 #'
 #' @return Renders the network graph to the active graphics device.
 #'   The ggplot object is returned invisibly for optional reuse.
@@ -66,10 +67,10 @@ plot_corr_map <- function(cor_mat, cor_method = "pearson") {
 #' adj_mat <- build_adjacency_mat(cor_mat)
 #' net <- build_network(adj_mat)
 #' gene_mods <- detect_network_modules(net)
-#' plot_network(net, modules = gene_mods$modules, n_top = 80)
+#' plot_network(net, modules = gene_mods$modules, n_top = 80, n_label = 20)
 
 plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
-                         community_method = "louvain") {
+                         community_method = "louvain", n_label = 20) {
 
   # Input check for network
   if (!is.list(network) || !inherits(network$graph, "igraph")) {
@@ -101,19 +102,26 @@ plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
     )
   }
 
+  # Label all plotted hub genes if n_label > n_top (warning)
+  if (n_label > n_top) {
+    warning(paste0("n_label (", n_label, ") exceeds n_top (", n_top,
+                   "). Labeling all ", n_top, " plotted genes."))
+    n_label <- n_top
+  }
+
   # Subset to top n hub genes to keep layout readable
 
   ##  Sort genes highest to lowest by degree and extract top n gene names
   hub_names <- get_hub_genes(network, n = n_top)$gene
   ## Top 20 hub genes
-  top20_names <- head(hub_names, 20)
+  top_label_names <- head(hub_names, n_label)
   ## Subgraph containing specified vertices and all their edges
   g_sub <- induced_subgraph(g, vids = hub_names)
 
   # Module membership and degree for the subgraph
   V(g_sub)$module   <- as.character(modules[V(g_sub)$name])
   V(g_sub)$degree   <- degree(g_sub)
-  V(g_sub)$is_top20 <- V(g_sub)$name %in% top20_names
+  V(g_sub)$is_label <- V(g_sub)$name %in% top_label_names
 
   # Layout
   layout_fr <- layout_with_fr(g_sub)
@@ -125,7 +133,7 @@ plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
     y           = layout_fr[, 2],
     degree      = V(g_sub)$degree,
     module      = paste0("M", V(g_sub)$module),
-    is_hub      = V(g_sub)$is_top20,
+    is_hub      = V(g_sub)$is_label,
     stringsAsFactors = FALSE
   )
 
