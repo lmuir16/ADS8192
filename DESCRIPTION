@@ -1,5 +1,5 @@
 Package: ADS8192
-Title: ADS 8192 Gene Correlation Network Tool
+Title: Gene Co-expression Network Analysis for Bulk RNA-seq Data
 Version: 0.0.0.9000
 Authors@R:
     person("Liane", "Muir", email = "liane.muir@stjude.org", role = c("aut", "cre"),
@@ -21,11 +21,11 @@ Imports:
     ggplot2,
     grid,
     igraph,
+    Rapp,
     SummarizedExperiment,
     tools
 Suggests:
     knitr,
-    Rapp,
     recount3,
     rmarkdown,
     testthat (>= 3.0.0)

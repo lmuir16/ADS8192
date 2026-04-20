@@ -38,7 +38,7 @@ plot_corr_map <- function(cor_mat, cor_method = "pearson") {
   invisible(ht)
 }
 
-#' Plot force-directed network graph of genes
+#' Plot force-directed network graph of hub genes
 #'
 #' Plots a force-directed network graph of the top \code{n_top} hub genes
 #' colored by module membership. The top 20 hub genes are labeled by gene symbol.
@@ -89,7 +89,7 @@ plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
     stop("n_top must be a single positive integer.")
   }
 
-  # Check that n_top <= length(degre)
+  # Check that n_top <= length(degree)
   if (n_top > length(deg)){
     stop(
       paste0(

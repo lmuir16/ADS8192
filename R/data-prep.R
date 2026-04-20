@@ -27,6 +27,13 @@ top_variable_features <- function(se, n = 500, assay_name = "counts") {
     stop(paste0("assay '", assay_name, "' not found in se"))
   }
 
+  # Cap n at the number of available features
+  if (n > nrow(se)) {
+    warning(paste0("n (", n, ") exceeds the number of available features (",
+                   nrow(se), "). Using all ", nrow(se), " features."))
+    n <- nrow(se)
+  }
+
   # Subset to top n variable genes (for tractable pairwise correlations)
   vars <- apply(assay(se, assay_name), 1, var)
   keep_genes <- names(sort(vars, decreasing = TRUE))[1:n]
@@ -70,8 +77,9 @@ select_random_samples <- function(se, n = 200) {
 #' missing or empty symbols, and resolves duplicate symbols with
 #' \code{make.unique()}.
 #'
-#' @param se A SummarizedExperiment object with a \code{counts} assay and
-#'   a \code{gene_name} column in \code{rowData()}
+#' @param se A SummarizedExperiment object with a \code{counts} assay
+#'   If \code{rowData()} contains a \code{gene_name} column, Ensembl IDs
+#'   are remapped to HGNC gene symbols. Otherwise rownames are used as-is.
 #'
 #' @return A log2-normalized genes x samples matrix with gene symbols as
 #'   row names
@@ -85,27 +93,21 @@ select_random_samples <- function(se, n = 200) {
 #' mat <- prepare_expression_matrix(example_se)
 
 prepare_expression_matrix <- function(se) {
-
   if (!inherits(se, "SummarizedExperiment")) {
     stop("se must be a SummarizedExperiment object")
   }
-
   if (!"counts" %in% assayNames(se)) {
     stop("se must contain a 'counts' assay")
   }
-
-  if (!"gene_name" %in% colnames(rowData(se))) {
-    stop("rowData(se) must contain a 'gene_name' column")
-  }
-
   # Log2-normalize counts
   mat <- log2(assay(se, "counts") + 1)
-
-  # Remap row identifiers to gene symbols
-  gene_symbols <- rowData(se)$gene_name
-  gene_symbols[is.na(gene_symbols) | gene_symbols == ""] <-
-    rownames(se)[is.na(gene_symbols) | gene_symbols == ""]
-  rownames(mat) <- make.unique(gene_symbols)
-
+  # Remap row identifiers to gene symbols if gene_name is available
+  # Falls back to existing rownames (e.g. Ensembl IDs) if not present
+  if ("gene_name" %in% colnames(rowData(se))) {
+    gene_symbols <- rowData(se)$gene_name
+    gene_symbols[is.na(gene_symbols) | gene_symbols == ""] <-
+      rownames(se)[is.na(gene_symbols) | gene_symbols == ""]
+    rownames(mat) <- make.unique(gene_symbols)
+  }
   return(mat)
 }

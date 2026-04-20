@@ -109,13 +109,12 @@ test_that("prepare_expression_matrix errors when counts assay is missing", {
   )
 })
 
-test_that("prepare_expression_matrix errors when gene_name column is missing", {
+test_that("prepare_expression_matrix falls back to rownames without gene_name", {
   se_no_gene_name <- se
   rowData(se_no_gene_name)$gene_name <- NULL
-  expect_error(
-    prepare_expression_matrix(se_no_gene_name),
-    "rowData\\(se\\) must contain a 'gene_name' column"
-  )
+  result <- prepare_expression_matrix(se_no_gene_name)
+  expect_true(is.matrix(result))
+  expect_equal(rownames(result), rownames(se_no_gene_name))
 })
 
 test_that("prepare_expression_matrix returns a matrix", {

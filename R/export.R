@@ -13,6 +13,8 @@
 #' @param modules A named integer vector mapping genes to module IDs
 #' @param module_df A data frame of gene-module assignments
 #'    with node-level metadata (e.g. degree)
+#' @param output_dir Directory to write TSV files to
+#'    (default: a "network_output" folder in the session temp directory)
 #'
 #' @return A character vector of exported file names
 #'
@@ -31,7 +33,8 @@
 #'     gene_mods$module_df, cor_threshold = 0.7)
 
 net_export <- function(cor_mat, network, net_summary, modules,
-                       module_df, cor_threshold = 0.7) {
+                       module_df, cor_threshold = 0.7,
+                       output_dir = file.path(tempdir(),"network_output")) {
 
   # Input checks for network
   if (!is.list(network) || !inherits(network$graph, "igraph")) {
@@ -48,7 +51,6 @@ net_export <- function(cor_mat, network, net_summary, modules,
                 "Ensure network was created by build_network()."))
   }
 
-  output_dir <- file.path(tempdir(), "network_output")
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
   # Write top correlations (flattened, filtered to |r| >= threshold)
