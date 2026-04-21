@@ -1,0 +1,12 @@
+name: ads8192
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base
+  - r-ggplot2
+  - r-igraph
+  - bioconductor-complexheatmap
+  - bioconductor-summarizedexperiment
+  - r-devtools
+prefix: /home/liane-muir/miniconda3/envs/ads8192
