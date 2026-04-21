@@ -1,0 +1,45 @@
+/* General layout */
+main {
+  padding-top: 2rem;
+}
+
+/* Search bar - works in both light and dark mode */
+[data-bs-theme="dark"] .form-control {
+  background-color: #2d2d2d;
+  border-color: #555555;
+  color: #f0f0f0;
+}
+
+/* Push sidebar below navbar */
+.col-md-3 {
+  padding-top: 2rem;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+  background-color: #3a3a3a;
+  border-color: #888888;
+  color: #f0f0f0;
+  box-shadow: 0 0 0 0.2rem rgba(136, 136, 136, 0.25);
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #888888;
+}
+
+/* Light mode - clean and minimal to match Lux */
+[data-bs-theme="light"] .form-control {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+  color: #212529;
+}
+
+[data-bs-theme="light"] .form-control:focus {
+  background-color: #ffffff;
+  border-color: #86b7fe;
+  color: #212529;
+  box-shadow: 0 0 0 0.2rem rgba(134, 183, 254, 0.25);
+}
+
+[data-bs-theme="light"] .form-control::placeholder {
+  color: #6c757d;
+}
