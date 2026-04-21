@@ -7,11 +7,12 @@
 
 ## Citation
 
-Muir L (2026). *ADS8192: ADS 8192 Gene Correlation Network Tool*. R
-package version 0.0.0.9000, <https://lmuir16.github.io/ADS8192/>.
+Muir L (2026). *ADS8192: Gene Co-expression Network Analysis for Bulk
+RNA-seq Data*. R package version 0.0.0.9000,
+<https://lmuir16.github.io/ADS8192/>.
 
     @Manual{,
-      title = {ADS8192: ADS 8192 Gene Correlation Network Tool},
+      title = {ADS8192: Gene Co-expression Network Analysis for Bulk RNA-seq Data},
       author = {Liane Muir},
       year = {2026},
       note = {R package version 0.0.0.9000},
