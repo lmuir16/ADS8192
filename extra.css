@@ -43,3 +43,9 @@ main {
 [data-bs-theme="light"] .form-control::placeholder {
   color: #6c757d;
 }
+
+/* Uppercase Articles dropdown to match other navbar items */
+.navbar .dropdown-toggle {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
