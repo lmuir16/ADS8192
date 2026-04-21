@@ -1,4 +1,11 @@
-url: https://lmuir16.github.io/ADS8192/
+URL: https://lmuir16.github.io/ADS8192/, https://github.com/lmuir16/ADS8192
+
+repo:
+  url:
+    home: https://github.com/lmuir16/ADS8192
+    source: https://github.com/lmuir16/ADS8192/blob/master/
+    issue: https://github.com/lmuir16/ADS8192/issues/
+    user: https://github.com/
 
 template:
   bootstrap: 5
@@ -9,6 +16,9 @@ template:
 
 home:
   strip_header: false
+  links:
+  - text: Report a bug
+    href: https://github.com/lmuir16/ADS8192/issues
 
 navbar:
   structure:
