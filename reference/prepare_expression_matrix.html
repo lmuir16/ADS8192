@@ -62,8 +62,9 @@ missing or empty symbols, and resolves duplicate symbols with
 
 
 <dl><dt id="arg-se">se<a class="anchor" aria-label="anchor" href="#arg-se"></a></dt>
-<dd><p>A SummarizedExperiment object with a <code>counts</code> assay and
-a <code>gene_name</code> column in <code><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">rowData()</a></code></p></dd>
+<dd><p>A SummarizedExperiment object with a <code>counts</code> assay
+If <code><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">rowData()</a></code> contains a <code>gene_name</code> column, Ensembl IDs
+are remapped to HGNC gene symbols. Otherwise rownames are used as-is.</p></dd>
 
 </dl></div>
     <div class="section level2">

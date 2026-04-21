@@ -1,4 +1,4 @@
-# Pairwise correlation matrix
+# Pairwise gene-gene correlation matrix
 
 Computes pairwise correlations between genes (rows) across samples
 (columns) using the specified correlation method.

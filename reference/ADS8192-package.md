@@ -1,4 +1,4 @@
-# ADS8192: ADS 8192 Gene Correlation Network Tool
+# ADS8192: Gene Co-expression Network Analysis for Bulk RNA-seq Data
 
 Provides functions to build and analyze gene co-expression networks from
 bulk RNA-seq data. Includes tools for selecting the most variable genes,

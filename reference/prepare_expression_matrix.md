@@ -16,9 +16,10 @@ prepare_expression_matrix(se)
 
 - se:
 
-  A SummarizedExperiment object with a `counts` assay and a `gene_name`
-  column in
+  A SummarizedExperiment object with a `counts` assay If
   [`rowData()`](https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html)
+  contains a `gene_name` column, Ensembl IDs are remapped to HGNC gene
+  symbols. Otherwise rownames are used as-is.
 
 ## Value
 

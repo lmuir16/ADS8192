@@ -16,7 +16,7 @@ Functions for loading and preparing expression data
 Functions for building and analyzing co-expression networks
 
 - [`pairwise_corr()`](https://lmuir16.github.io/ADS8192/reference/pairwise_corr.md)
-  : Pairwise correlation matrix
+  : Pairwise gene-gene correlation matrix
 - [`build_adjacency_mat()`](https://lmuir16.github.io/ADS8192/reference/build_adjacency_mat.md)
   : Threshold to adjacency matrix
 - [`build_network()`](https://lmuir16.github.io/ADS8192/reference/build_network.md)
@@ -36,7 +36,7 @@ Functions for plotting network results
 - [`plot_corr_map()`](https://lmuir16.github.io/ADS8192/reference/plot_corr_map.md)
   : Plot gene-gene correlation heatmap
 - [`plot_network()`](https://lmuir16.github.io/ADS8192/reference/plot_network.md)
-  : Plot force-directed network graph of genes
+  : Plot force-directed network graph of hub genes
 
 ## Export
 

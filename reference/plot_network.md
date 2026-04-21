@@ -1,4 +1,4 @@
-# Plot force-directed network graph of genes
+# Plot force-directed network graph of hub genes
 
 Plots a force-directed network graph of the top `n_top` hub genes
 colored by module membership. The top 20 hub genes are labeled by gene
@@ -12,7 +12,8 @@ plot_network(
   modules,
   n_top = 80,
   cor_threshold = 0.7,
-  community_method = "louvain"
+  community_method = "louvain",
+  n_label = 20
 )
 ```
 
@@ -38,6 +39,10 @@ plot_network(
 
   Community detection method used to detect modules (default: "louvain")
 
+- n_label:
+
+  Number of top hub genes to label by gene symbol (default: 20)
+
 ## Value
 
 Renders the network graph to the active graphics device. The ggplot
@@ -54,5 +59,5 @@ net <- build_network(adj_mat)
 gene_mods <- detect_network_modules(net)
 #> Modularity: 0.545
 #> Modules found: 512
-plot_network(net, modules = gene_mods$modules, n_top = 80)
+plot_network(net, modules = gene_mods$modules, n_top = 80, n_label = 20)
 ```

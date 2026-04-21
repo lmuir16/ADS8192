@@ -12,7 +12,9 @@ net_export(
   net_summary,
   modules,
   module_df,
-  cor_threshold = 0.7
+  cor_threshold = 0.7,
+  n_hubs = 20,
+  output_dir = file.path(tempdir(), "network_output")
 )
 ```
 
@@ -44,6 +46,15 @@ net_export(
   Correlation threshold used to define significant edges (default: 0.7;
   should match the value passed to build_adjacency_mat())
 
+- n_hubs:
+
+  Number of top hub genes to export to hub_genes.tsv (default: 20)
+
+- output_dir:
+
+  Directory to write TSV files to (default: a "network_output" folder in
+  the session temp directory)
+
 ## Value
 
 A character vector of exported file names
@@ -69,5 +80,5 @@ net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
 #> 6     n_modules   513.0000
 #> 7    modularity     0.5472
 network_results <- net_export(cor_mat, net, net_summary, gene_mods$modules,
-    gene_mods$module_df, cor_threshold = 0.7)
+    gene_mods$module_df, cor_threshold = 0.7, n_hubs = 10)
 ```

@@ -51,7 +51,9 @@ module assignments, node statistics, and module summaries to TSV files</p>
 <span>  <span class="va">net_summary</span>,</span>
 <span>  <span class="va">modules</span>,</span>
 <span>  <span class="va">module_df</span>,</span>
-<span>  cor_threshold <span class="op">=</span> <span class="fl">0.7</span></span>
+<span>  cor_threshold <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>  n_hubs <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  output_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"network_output"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -84,6 +86,15 @@ with node-level metadata (e.g. degree)</p></dd>
 <dd><p>Correlation threshold used to define significant edges
 (default: 0.7; should match the value passed to build_adjacency_mat())</p></dd>
 
+
+<dt id="arg-n-hubs">n_hubs<a class="anchor" aria-label="anchor" href="#arg-n-hubs"></a></dt>
+<dd><p>Number of top hub genes to export to hub_genes.tsv (default: 20)</p></dd>
+
+
+<dt id="arg-output-dir">output_dir<a class="anchor" aria-label="anchor" href="#arg-output-dir"></a></dt>
+<dd><p>Directory to write TSV files to
+(default: a "network_output" folder in the session temp directory)</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -110,7 +121,7 @@ with node-level metadata (e.g. degree)</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6     n_modules   513.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7    modularity     0.5472</span>
 <span class="r-in"><span><span class="va">network_results</span> <span class="op">&lt;-</span> <span class="fu">net_export</span><span class="op">(</span><span class="va">cor_mat</span>, <span class="va">net</span>, <span class="va">net_summary</span>, <span class="va">gene_mods</span><span class="op">$</span><span class="va">modules</span>,</span></span>
-<span class="r-in"><span>    <span class="va">gene_mods</span><span class="op">$</span><span class="va">module_df</span>, cor_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="va">gene_mods</span><span class="op">$</span><span class="va">module_df</span>, cor_threshold <span class="op">=</span> <span class="fl">0.7</span>, n_hubs <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
