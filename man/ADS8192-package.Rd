@@ -4,7 +4,7 @@
 \name{ADS8192-package}
 \alias{ADS8192}
 \alias{ADS8192-package}
-\title{ADS8192: ADS 8192 Gene Correlation Network Tool}
+\title{ADS8192: Gene Co-expression Network Analysis for Bulk RNA-seq Data}
 \description{
 Provides functions to build and analyze gene co-expression networks from bulk RNA-seq data. Includes tools for selecting the most variable genes, computing pairwise gene-gene correlation matrices, and thresholding correlations into binary adjacency matrices with per-gene (node-level) statistics. Supports community detection using Louvain or walktrap algorithms with per-module summaries and global network statistics. Provides visualizations as correlation heatmaps or force-directed layouts colored by module with hub gene labels. Exports results to TSV files.
 }

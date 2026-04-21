@@ -7,8 +7,9 @@
 prepare_expression_matrix(se)
 }
 \arguments{
-\item{se}{A SummarizedExperiment object with a \code{counts} assay and
-a \code{gene_name} column in \code{rowData()}}
+\item{se}{A SummarizedExperiment object with a \code{counts} assay
+If \code{rowData()} contains a \code{gene_name} column, Ensembl IDs
+are remapped to HGNC gene symbols. Otherwise rownames are used as-is.}
 }
 \value{
 A log2-normalized genes x samples matrix with gene symbols as

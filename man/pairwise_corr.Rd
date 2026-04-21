@@ -2,7 +2,7 @@
 % Please edit documentation in R/network.R
 \name{pairwise_corr}
 \alias{pairwise_corr}
-\title{Pairwise correlation matrix}
+\title{Pairwise gene-gene correlation matrix}
 \usage{
 pairwise_corr(mat, cor_method = "pearson")
 }

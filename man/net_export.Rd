@@ -10,7 +10,9 @@ net_export(
   net_summary,
   modules,
   module_df,
-  cor_threshold = 0.7
+  cor_threshold = 0.7,
+  n_hubs = 20,
+  output_dir = file.path(tempdir(), "network_output")
 )
 }
 \arguments{
@@ -27,6 +29,11 @@ with node-level metadata (e.g. degree)}
 
 \item{cor_threshold}{Correlation threshold used to define significant edges
 (default: 0.7; should match the value passed to build_adjacency_mat())}
+
+\item{n_hubs}{Number of top hub genes to export to hub_genes.tsv (default: 20)}
+
+\item{output_dir}{Directory to write TSV files to
+(default: a "network_output" folder in the session temp directory)}
 }
 \value{
 A character vector of exported file names
@@ -44,5 +51,5 @@ net <- build_network(adj_mat)
 gene_mods <- detect_network_modules(net)
 net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)
 network_results <- net_export(cor_mat, net, net_summary, gene_mods$modules,
-    gene_mods$module_df, cor_threshold = 0.7)
+    gene_mods$module_df, cor_threshold = 0.7, n_hubs = 10)
 }

@@ -2,14 +2,15 @@
 % Please edit documentation in R/plotting.R
 \name{plot_network}
 \alias{plot_network}
-\title{Plot force-directed network graph of genes}
+\title{Plot force-directed network graph of hub genes}
 \usage{
 plot_network(
   network,
   modules,
   n_top = 80,
   cor_threshold = 0.7,
-  community_method = "louvain"
+  community_method = "louvain",
+  n_label = 20
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ plot_network(
 
 \item{community_method}{Community detection method used to detect modules
 (default: "louvain")}
+
+\item{n_label}{Number of top hub genes to label by gene symbol (default: 20)}
 }
 \value{
 Renders the network graph to the active graphics device.
@@ -39,5 +42,5 @@ cor_mat <- pairwise_corr(mat)
 adj_mat <- build_adjacency_mat(cor_mat)
 net <- build_network(adj_mat)
 gene_mods <- detect_network_modules(net)
-plot_network(net, modules = gene_mods$modules, n_top = 80)
+plot_network(net, modules = gene_mods$modules, n_top = 80, n_label = 20)
 }
