@@ -7,6 +7,9 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/lmuir16/ADS8192/blob/master/DESCRIPTION)
+
 Muir L (2026). *ADS8192: Gene Co-expression Network Analysis for Bulk
 RNA-seq Data*. R package version 0.0.0.9000,
 <https://lmuir16.github.io/ADS8192/>.

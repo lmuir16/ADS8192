@@ -2,5 +2,4 @@
 
 ### All vignettes
 
-- [Getting Started with
-  ADS8192](https://lmuir16.github.io/ADS8192/articles/getting-started.md):
+- [Getting Started with ADS8192](getting-started.md):

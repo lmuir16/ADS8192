@@ -114,9 +114,8 @@ sum(adj_mat) / (nrow(adj_mat) * (nrow(adj_mat) - 1))
 ## Constructing the Network
 
 The adjacency matrix is passed to
-[`build_network()`](https://lmuir16.github.io/ADS8192/reference/build_network.md),
-which constructs an igraph object and computes per-gene degree and
-betweenness centrality.
+[`build_network()`](../reference/build_network.md), which constructs an
+igraph object and computes per-gene degree and betweenness centrality.
 
 - **Degree** — the number of other genes a gene is correlated with above
   the threshold. High-degree genes are candidates for hub genes.
@@ -166,9 +165,9 @@ head(gene_mods$module_df)
 
 ## Summarizing the Network
 
-[`summarize_network()`](https://lmuir16.github.io/ADS8192/reference/summarize_network.md)
-returns a data frame of global network statistics, including total edge
-count, mean degree, hub gene count, and modularity.
+[`summarize_network()`](../reference/summarize_network.md) returns a
+data frame of global network statistics, including total edge count,
+mean degree, hub gene count, and modularity.
 
 ``` r
 net_summary <- summarize_network(net, gene_mods$modules, gene_mods$modularity)

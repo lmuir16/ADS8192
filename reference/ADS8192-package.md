@@ -14,41 +14,39 @@ files.
 
 Key functions:
 
-- [`prepare_expression_matrix()`](https://lmuir16.github.io/ADS8192/reference/prepare_expression_matrix.md)
-  — prepare log-normalized matrix from a SummarizedExperiment
+- [`prepare_expression_matrix()`](prepare_expression_matrix.md) —
+  prepare log-normalized matrix from a SummarizedExperiment
 
-- [`top_variable_features()`](https://lmuir16.github.io/ADS8192/reference/top_variable_features.md)
-  — select most variable genes
+- [`top_variable_features()`](top_variable_features.md) — select most
+  variable genes
 
-- [`select_random_samples()`](https://lmuir16.github.io/ADS8192/reference/select_random_samples.md)
-  — subset to random samples
+- [`select_random_samples()`](select_random_samples.md) — subset to
+  random samples
 
-- [`pairwise_corr()`](https://lmuir16.github.io/ADS8192/reference/pairwise_corr.md)
-  — compute gene-gene correlation matrix
+- [`pairwise_corr()`](pairwise_corr.md) — compute gene-gene correlation
+  matrix
 
-- [`build_adjacency_mat()`](https://lmuir16.github.io/ADS8192/reference/build_adjacency_mat.md)
-  — threshold correlations to adjacency matrix
+- [`build_adjacency_mat()`](build_adjacency_mat.md) — threshold
+  correlations to adjacency matrix
 
-- [`build_network()`](https://lmuir16.github.io/ADS8192/reference/build_network.md)
-  — construct igraph network and compute node statistics
+- [`build_network()`](build_network.md) — construct igraph network and
+  compute node statistics
 
-- [`detect_network_modules()`](https://lmuir16.github.io/ADS8192/reference/detect_network_modules.md)
-  — detect gene modules via Louvain or walktrap
+- [`detect_network_modules()`](detect_network_modules.md) — detect gene
+  modules via Louvain or walktrap
 
-- [`summarize_network()`](https://lmuir16.github.io/ADS8192/reference/summarize_network.md)
-  — summarize global network properties
+- [`summarize_network()`](summarize_network.md) — summarize global
+  network properties
 
-- [`get_hub_genes()`](https://lmuir16.github.io/ADS8192/reference/get_hub_genes.md)
-  — extract top hub genes by degree
+- [`get_hub_genes()`](get_hub_genes.md) — extract top hub genes by
+  degree
 
-- [`plot_corr_map()`](https://lmuir16.github.io/ADS8192/reference/plot_corr_map.md)
-  — plot correlation heatmap
+- [`plot_corr_map()`](plot_corr_map.md) — plot correlation heatmap
 
-- [`plot_network()`](https://lmuir16.github.io/ADS8192/reference/plot_network.md)
-  — plot force-directed network graph
+- [`plot_network()`](plot_network.md) — plot force-directed network
+  graph
 
-- [`net_export()`](https://lmuir16.github.io/ADS8192/reference/net_export.md)
-  — export results to TSV files
+- [`net_export()`](net_export.md) — export results to TSV files
 
 ## Author
 

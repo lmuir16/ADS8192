@@ -27,6 +27,5 @@ pak::pak("lmuir16/ADS8192")
 
 ## Getting Started
 
-See the [Getting Started
-vignette](https://lmuir16.github.io/ADS8192/articles/getting-started.md)
-for a full walkthrough of the pipeline using GTEx skeletal muscle data.
+See the [Getting Started vignette](articles/getting-started.md) for a
+full walkthrough of the pipeline using GTEx skeletal muscle data.
