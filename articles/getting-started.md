@@ -25,6 +25,8 @@ samples.
 
 ``` r
 library(ADS8192)
+#> Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by
+#> 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'
 
 data(example_se)
 example_se
