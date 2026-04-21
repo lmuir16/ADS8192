@@ -173,6 +173,19 @@ plot_network(net,
              community_method = "louvain")
 ```
 
+Note that the number of labeled hub genes can be controlled with `n_label` 
+to reduce overlap in dense networks:
+
+```{r n_label_example, eval=FALSE}
+# Reduce label density for cleaner visualization
+plot_network(net,
+             modules          = gene_mods$modules,
+             n_top            = 80,
+             n_label          = 10,
+             cor_threshold    = 0.7,
+             community_method = "louvain")
+```
+
 ## Exporting Results
 
 All results can be exported to TSV files for downstream analysis or reporting.

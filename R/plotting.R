@@ -155,7 +155,9 @@ plot_network <- function(network, modules, n_top = 80, cor_threshold = 0.7,
     geom_label(data = subset(node_df, is_hub),
                aes(x = x, y = y, label = gene),
                size = 2.5, label.padding = unit(0.15, "lines"),
-               linewidth = 0.2, alpha = 0.85) +
+               linewidth = 0.2, alpha = 0.85,
+               fill = "white",
+               color = "#333333") +
     scale_size_continuous(range = c(2, 8), name = "Degree") +
     scale_color_brewer(palette = "Set2", name = "Module") +
     theme_void() +
