@@ -14,7 +14,7 @@ Let’s see what the complete pipeline looks like…
 
 ``` r
 # Install from GitHub
-devtools::install_github("yourusername/ADS8192")
+devtools::install_github("lmuir16/ADS8192")
 ```
 
 ## Data Preparation
@@ -275,6 +275,17 @@ The exported files are:
 
 And that’s that!
 
+## Command Line Interface
+
+For non-interactive use, ADS8192 provides a CLI via Rapp. After
+installing the package, install the CLI with:
+
+``` r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+See the README for full CLI usage and available subcommands.
+
 ## Session Info
 
 ``` r
@@ -300,7 +311,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] ADS8192_0.0.0.9000
+#> [1] ADS8192_0.1.0
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] SummarizedExperiment_1.40.0 gtable_0.3.6               
@@ -333,7 +344,7 @@ sessionInfo()
 #> [55] S4Arrays_1.10.1             withr_3.0.2                
 #> [57] scales_1.4.0                rmarkdown_2.31             
 #> [59] XVector_0.50.0              matrixStats_1.5.0          
-#> [61] igraph_2.2.3                ragg_1.5.2                 
+#> [61] igraph_2.3.0                ragg_1.5.2                 
 #> [63] png_0.1-9                   GetoptLong_1.1.1           
 #> [65] evaluate_1.0.5              knitr_1.51                 
 #> [67] GenomicRanges_1.62.1        IRanges_2.44.0             

@@ -1,6 +1,6 @@
 # Changelog
 
-## ADS8192 0.0.0.9000
+## ADS8192 0.1.0
 
 ### Initial release
 
