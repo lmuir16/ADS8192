@@ -29,3 +29,31 @@ pak::pak("lmuir16/ADS8192")
 
 See the [Getting Started vignette](articles/getting-started.html) for a 
 full walkthrough of the pipeline using GTEx skeletal muscle data.
+
+## Command Line Interface
+
+ADS8192 includes a CLI via [Rapp](https://github.com/pawelru/Rapp).
+Install the CLI after installing the package:
+
+```r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+Three subcommands are available:
+
+```bash
+# Run full network analysis pipeline
+ADS8192 network --counts counts.tsv --output results/
+
+# Plot correlation heatmap
+ADS8192 heatmap --counts counts.tsv --output results/
+
+# Plot force-directed network graph
+ADS8192 plot-network --counts counts.tsv --output results/
+
+# Get help for any subcommand
+ADS8192 network --help
+```
+
+The `--counts` argument accepts a genes x samples TSV or CSV file with
+gene identifiers as row names.

@@ -29,7 +29,7 @@ Let's see what the complete pipeline looks like...
 
 ```{r install, eval=FALSE}
 # Install from GitHub
-devtools::install_github("yourusername/ADS8192")
+devtools::install_github("lmuir16/ADS8192")
 ```
 
 ## Data Preparation
@@ -214,6 +214,17 @@ The exported files are:
 - `module_summary.tsv` — per-module size, mean degree, and top hub gene
 
 And that's that!
+
+## Command Line Interface
+
+For non-interactive use, ADS8192 provides a CLI via Rapp. After installing
+the package, install the CLI with:
+
+```r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+See the README for full CLI usage and available subcommands.
 
 ## Session Info
 
