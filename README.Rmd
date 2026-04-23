@@ -87,14 +87,16 @@ Rapp::install_pkg_cli_apps("ADS8192")
 Example test data is included at `tests/testdata/counts.tsv`. Run the 
 pipeline from the terminal:
 
+All subcommands accept a genes x samples counts matrix as input:
+
 ```bash
-# Full network analysis
+# Full network analysis pipeline — exports 6 TSV files
 ADS8192 network --counts tests/testdata/counts.tsv --output results/ --n-top 50
 
 # Correlation heatmap
 ADS8192 heatmap --counts tests/testdata/counts.tsv --output results/ --n-top 50
 
-# Network plot
+# Force-directed network graph
 ADS8192 plot-network --counts tests/testdata/counts.tsv --output results/ --n-top 50 --n-plot 20
 ```
 
