@@ -37,14 +37,16 @@ ENV PATH=/opt/conda/envs/ads8192/bin:$PATH \
 WORKDIR /ads8192
 
 # Package sources (exclude dev-only paths via .dockerignore when using COPY .)
-COPY DESCRIPTION NAMESPACE LICENSE ./
-COPY R/ R/
-COPY man/ man/
-COPY data/ data/
-COPY vignettes/ vignettes/
-COPY tests/ tests/
+COPY . .
+
+# Rapp CLIs to ~/.local/bin; explicit CRAN mirror avoids interactive mirror selection
+RUN Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org")); install.packages("Rapp"); library(Rapp); Rapp::install_pkg_cli_apps("Rapp");'
 
 RUN R CMD INSTALL /ads8192
+
+RUN Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org")); Rapp::install_pkg_cli_apps("ADS8192")'
+
+ENV PATH=/root/.local/bin:$PATH
 
 # Default: run package tests (WORKDIR is package root)
 CMD ["R", "--no-save", "-q", "-e", "devtools::test()"]

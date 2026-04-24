@@ -1,0 +1,38 @@
+Package: ADS8192
+Title: Gene Co-expression Network Analysis for Bulk RNA-seq Data
+Version: 0.0.0.9000
+Authors@R:
+    person("Liane", "Muir", email = "liane.muir@stjude.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0002-5250-0464"))
+Description: Provides functions to build and analyze gene co-expression networks
+    from bulk RNA-seq data. Includes tools for selecting the most variable genes,
+    computing pairwise gene-gene correlation matrices, and thresholding correlations
+    into binary adjacency matrices with per-gene (node-level) statistics.
+    Supports community detection using Louvain or walktrap algorithms with
+    per-module summaries and global network statistics. Provides visualizations as
+    correlation heatmaps or force-directed layouts colored by module with hub gene
+    labels. Exports results to TSV files.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    ComplexHeatmap,
+    ggplot2,
+    grid,
+    igraph,
+    Rapp,
+    SummarizedExperiment,
+    tools
+Suggests:
+    knitr,
+    recount3,
+    rmarkdown,
+    testthat (>= 3.0.0)
+biocViews: GeneExpression, RNASeq, Network
+Depends: 
+    R (>= 3.5)
+LazyData: true
+Config/testthat/edition: 3
+URL: https://lmuir16.github.io/ADS8192/
+VignetteBuilder: knitr
