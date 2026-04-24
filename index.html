@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">ADS8192</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,29 +81,17 @@
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"lmuir16/ADS8192"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="command-line-interface">Command Line Interface<a class="anchor" aria-label="anchor" href="#command-line-interface"></a>
+</h2>
+<p>ADS8192 includes a CLI via <a href="https://github.com/pawelru/Rapp" class="external-link">Rapp</a> for non-interactive use. Install after installing the package:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">Rapp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rapp/man/install_pkg_cli_apps.html" class="external-link">install_pkg_cli_apps</a></span><span class="op">(</span><span class="st">"ADS8192"</span><span class="op">)</span></span></code></pre></div>
+<p>See the <a href="articles/getting-started.html">Getting Started vignette</a> for usage instructions and example data.</p>
+</div>
+<div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p>See the <a href="articles/getting-started.html">Getting Started vignette</a> for a full walkthrough of the pipeline using GTEx skeletal muscle data.</p>
-</div>
-<div class="section level2">
-<h2 id="command-line-interface">Command Line Interface<a class="anchor" aria-label="anchor" href="#command-line-interface"></a>
-</h2>
-<p>ADS8192 includes a CLI via <a href="https://github.com/pawelru/Rapp" class="external-link">Rapp</a>. Install the CLI after installing the package:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Rapp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rapp/man/install_pkg_cli_apps.html" class="external-link">install_pkg_cli_apps</a></span><span class="op">(</span><span class="st">"ADS8192"</span><span class="op">)</span></span></code></pre></div>
-<p>Three subcommands are available:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Run full network analysis pipeline</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">ADS8192</span> network <span class="at">--counts</span> counts.tsv <span class="at">--output</span> results/</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Plot correlation heatmap</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="ex">ADS8192</span> heatmap <span class="at">--counts</span> counts.tsv <span class="at">--output</span> results/</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Plot force-directed network graph</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="ex">ADS8192</span> plot-network <span class="at">--counts</span> counts.tsv <span class="at">--output</span> results/</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co"># Get help for any subcommand</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="ex">ADS8192</span> network <span class="at">--help</span></span></code></pre></div>
-<p>The <code>--counts</code> argument accepts a genes x samples TSV or CSV file with gene identifiers as row names.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

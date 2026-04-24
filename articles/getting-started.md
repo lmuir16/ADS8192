@@ -273,8 +273,6 @@ The exported files are:
 - `node_stats.tsv` — degree, betweenness, and module for every gene
 - `module_summary.tsv` — per-module size, mean degree, and top hub gene
 
-And that’s that!
-
 ## Command Line Interface
 
 For non-interactive use, ADS8192 provides a CLI via Rapp. After
@@ -284,7 +282,28 @@ installing the package, install the CLI with:
 Rapp::install_pkg_cli_apps("ADS8192")
 ```
 
-See the README for full CLI usage and available subcommands.
+The CLI accepts a genes x samples counts matrix as TSV or CSV, with gene
+identifiers as row names. A small example counts matrix is available at
+`tests/testdata/counts.tsv` in the package repository for testing.
+
+All subcommands accept the same core arguments:
+
+``` bash
+# Full network analysis pipeline — exports 6 TSV files
+ADS8192 network --counts counts.tsv --output results/ --n-top 500
+
+# Correlation heatmap
+ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+
+# Force-directed network graph
+ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+```
+
+See `ADS8192 --help` and `ADS8192 <subcommand> --help` for full
+parameter documentation including correlation method, threshold, and
+community detection options.
+
+And that’s that!
 
 ## Session Info
 
@@ -311,20 +330,20 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] ADS8192_0.1.0
+#> [1] ADS8192_0.0.0.9000
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] SummarizedExperiment_1.40.0 gtable_0.3.6               
 #>  [3] circlize_0.4.18             shape_1.4.6.1              
 #>  [5] rjson_0.2.23                xfun_0.57                  
-#>  [7] bslib_0.10.0                ggplot2_4.0.2              
+#>  [7] bslib_0.10.0                ggplot2_4.0.3              
 #>  [9] GlobalOptions_0.1.4         Biobase_2.70.0             
 #> [11] lattice_0.22-9              vctrs_0.7.3                
 #> [13] tools_4.5.3                 generics_0.1.4             
 #> [15] stats4_4.5.3                parallel_4.5.3             
 #> [17] tibble_3.3.1                cluster_2.1.8.2            
 #> [19] pkgconfig_2.0.3             Matrix_1.7-4               
-#> [21] RColorBrewer_1.1-3          S7_0.2.1-1                 
+#> [21] RColorBrewer_1.1-3          S7_0.2.2                   
 #> [23] desc_1.4.3                  S4Vectors_0.48.1           
 #> [25] lifecycle_1.0.5             compiler_4.5.3             
 #> [27] farver_2.1.2                textshaping_1.0.5          
