@@ -25,6 +25,18 @@ BiocManager::install(c("SummarizedExperiment", "recount3"))
 pak::pak("lmuir16/ADS8192")
 ```
 
+## Command Line Interface
+
+ADS8192 includes a CLI via [Rapp](https://github.com/pawelru/Rapp) for
+non-interactive use. Install after installing the package:
+
+```r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+See the [Getting Started vignette](articles/getting-started.html) for
+usage instructions and example data.
+
 ## Getting Started
 
 See the [Getting Started vignette](articles/getting-started.html) for a 

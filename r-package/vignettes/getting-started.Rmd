@@ -29,7 +29,7 @@ Let's see what the complete pipeline looks like...
 
 ```{r install, eval=FALSE}
 # Install from GitHub
-devtools::install_github("yourusername/ADS8192")
+devtools::install_github("lmuir16/ADS8192")
 ```
 
 ## Data Preparation
@@ -212,6 +212,36 @@ The exported files are:
 - `module_assignments.tsv` — module membership for all genes
 - `node_stats.tsv` — degree, betweenness, and module for every gene
 - `module_summary.tsv` — per-module size, mean degree, and top hub gene
+
+## Command Line Interface
+
+For non-interactive use, ADS8192 provides a CLI via Rapp. After installing
+the package, install the CLI with:
+
+```r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+The CLI accepts a genes x samples counts matrix as TSV or CSV, with gene
+identifiers as row names. A small example counts matrix is available at
+`tests/testdata/counts.tsv` in the package repository for testing.
+
+All subcommands accept the same core arguments:
+
+```bash
+# Full network analysis pipeline — exports 6 TSV files
+ADS8192 network --counts counts.tsv --output results/ --n-top 500
+
+# Correlation heatmap
+ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+
+# Force-directed network graph
+ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+```
+
+See `ADS8192 --help` and `ADS8192 <subcommand> --help` for full parameter
+documentation including correlation method, threshold, and community
+detection options.
 
 And that's that!
 

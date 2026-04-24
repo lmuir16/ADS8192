@@ -8,3 +8,5 @@
 ^\.github$
 ^README\.Rmd$
 ^index\.md$
+^Dockerfile$
+^environment\.yml$

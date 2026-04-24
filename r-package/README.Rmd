@@ -75,6 +75,33 @@ hub_genes <- get_hub_genes(net, modules = gene_mods$modules, n = 10)
 head(hub_genes)
 ```
 
+## Command Line Interface
+
+For non-interactive use, ADS8192 provides a CLI via Rapp. After installing
+the package, install the CLI with:
+
+```r
+Rapp::install_pkg_cli_apps("ADS8192")
+```
+
+All subcommands accept a genes x samples counts matrix as TSV or CSV input:
+
+```bash
+# Full network analysis pipeline — exports 6 TSV files
+ADS8192 network --counts counts.tsv --output results/ --n-top 500
+
+# Correlation heatmap
+ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+
+# Force-directed network graph
+ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+```
+
+See `ADS8192 --help` and `ADS8192 <subcommand> --help` for all available options.
+
+A small example counts matrix is available at `tests/testdata/counts.tsv`
+in the package repository for testing purposes.
+
 ## Learn More
 
 See `vignette("getting-started", package = "ADS8192")` for a full
