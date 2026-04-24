@@ -23,7 +23,7 @@ jobs:
     permissions:
       contents: write
 
-    deafaults:
+    defaults:
       run:
         working-directory: r-package
 
