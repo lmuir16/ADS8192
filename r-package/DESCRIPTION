@@ -21,11 +21,11 @@ Imports:
     ggplot2,
     grid,
     igraph,
-    Rapp,
     SummarizedExperiment,
     tools
 Suggests:
     knitr,
+    Rapp,
     recount3,
     rmarkdown,
     testthat (>= 3.0.0)
