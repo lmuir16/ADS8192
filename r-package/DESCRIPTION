@@ -1,6 +1,6 @@
 Package: corinet
 Title: Gene Co-expression Network Analysis for Bulk RNA-seq Data
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R:
     person("Liane", "Muir", email = "liane.muir@stjude.org", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0002-5250-0464"))
