@@ -1,6 +1,6 @@
 # Changelog
 
-## ADS8192 0.1.0
+## corinet 0.1.0
 
 ### Initial release
 

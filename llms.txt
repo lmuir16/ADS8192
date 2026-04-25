@@ -1,7 +1,7 @@
-# ADS8192
+# corinet
 
-ADS8192 provides a lightweight pipeline for building and analyzing gene
-co-expression networks from bulk RNA-seq data. Starting from a
+**corinet** provides a lightweight pipeline for building and analyzing
+gene co-expression networks from bulk RNA-seq data. Starting from a
 `SummarizedExperiment` object, the package supports the full workflow
 from data preparation through network construction, module detection,
 visualization, and export.
@@ -22,20 +22,17 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install(c("SummarizedExperiment", "recount3"))
 
-pak::pak("lmuir16/ADS8192")
+pak::pak("lmuir16/corinet")
 ```
 
 ## Command Line Interface
 
-ADS8192 includes a CLI via [Rapp](https://github.com/pawelru/Rapp) for
+corinet includes a CLI via [Rapp](https://github.com/pawelru/Rapp) for
 non-interactive use. Install after installing the package:
 
 ``` r
-Rapp::install_pkg_cli_apps("ADS8192")
+Rapp::install_pkg_cli_apps("corinet")
 ```
-
-See the [Getting Started vignette](articles/getting-started.md) for
-usage instructions and example data.
 
 ## Getting Started
 
@@ -97,4 +94,4 @@ Example datasets
 
 ### All vignettes
 
-- [Getting Started with ADS8192](getting-started.md):
+- [Getting Started with corinet](getting-started.md):

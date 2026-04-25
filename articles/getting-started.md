@@ -1,12 +1,12 @@
-# Getting Started with ADS8192
+# Getting Started with corinet
 
 ## Introduction
 
-ADS8192 provides a lightweight pipeline for building and analyzing gene
-co-expression networks from bulk RNA-seq data. Starting from a
-`SummarizedExperiment` object, the package supports the full workflow
-from data preparation through network construction, module detection,
-visualization, and export.
+**corinet** provides a lightweight pipeline for building **cor**relation
+**net**works to analyze gene co-expression in bulk RNA-seq data.
+Starting from a `SummarizedExperiment` object, the package supports the
+full workflow from data preparation through network construction, module
+detection, visualization, and export.
 
 Let’s see what the complete pipeline looks like…
 
@@ -14,7 +14,7 @@ Let’s see what the complete pipeline looks like…
 
 ``` r
 # Install from GitHub
-devtools::install_github("lmuir16/ADS8192")
+devtools::install_github("lmuir16/corinet")
 ```
 
 ## Data Preparation
@@ -24,9 +24,7 @@ GTEx skeletal muscle bulk RNA-seq data for 2000 genes across 200
 samples.
 
 ``` r
-library(ADS8192)
-#> Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by
-#> 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'
+library(corinet)
 
 data(example_se)
 example_se
@@ -275,11 +273,11 @@ The exported files are:
 
 ## Command Line Interface
 
-For non-interactive use, ADS8192 provides a CLI via Rapp. After
+For non-interactive use, corinet provides a CLI via Rapp. After
 installing the package, install the CLI with:
 
 ``` r
-Rapp::install_pkg_cli_apps("ADS8192")
+Rapp::install_pkg_cli_apps("corinet")
 ```
 
 The CLI accepts a genes x samples counts matrix as TSV or CSV, with gene
@@ -290,16 +288,16 @@ All subcommands accept the same core arguments:
 
 ``` bash
 # Full network analysis pipeline — exports 6 TSV files
-ADS8192 network --counts counts.tsv --output results/ --n-top 500
+corinet network --counts counts.tsv --output results/ --n-top 500
 
-# Correlation heatmap
-ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+# Gene correlation heatmap
+corinet heatmap --counts counts.tsv --output results/ --n-top 500
 
 # Force-directed network graph
-ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+corinet plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
 ```
 
-See `ADS8192 --help` and `ADS8192 <subcommand> --help` for full
+See `corinet --help` and `corinet <subcommand> --help` for full
 parameter documentation including correlation method, threshold, and
 community detection options.
 
@@ -309,7 +307,7 @@ And that’s that!
 
 ``` r
 sessionInfo()
-#> R version 4.5.3 (2026-03-11)
+#> R version 4.6.0 (2026-04-24)
 #> Platform: x86_64-pc-linux-gnu
 #> Running under: Ubuntu 24.04.4 LTS
 #> 
@@ -330,46 +328,46 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] ADS8192_0.0.0.9000
+#> [1] corinet_0.0.0.9000
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] SummarizedExperiment_1.40.0 gtable_0.3.6               
+#>  [1] SummarizedExperiment_1.41.1 gtable_0.3.6               
 #>  [3] circlize_0.4.18             shape_1.4.6.1              
 #>  [5] rjson_0.2.23                xfun_0.57                  
 #>  [7] bslib_0.10.0                ggplot2_4.0.3              
-#>  [9] GlobalOptions_0.1.4         Biobase_2.70.0             
+#>  [9] GlobalOptions_0.1.4         Biobase_2.71.0             
 #> [11] lattice_0.22-9              vctrs_0.7.3                
-#> [13] tools_4.5.3                 generics_0.1.4             
-#> [15] stats4_4.5.3                parallel_4.5.3             
+#> [13] tools_4.6.0                 generics_0.1.4             
+#> [15] stats4_4.6.0                parallel_4.6.0             
 #> [17] tibble_3.3.1                cluster_2.1.8.2            
-#> [19] pkgconfig_2.0.3             Matrix_1.7-4               
+#> [19] pkgconfig_2.0.3             Matrix_1.7-5               
 #> [21] RColorBrewer_1.1-3          S7_0.2.2                   
-#> [23] desc_1.4.3                  S4Vectors_0.48.1           
-#> [25] lifecycle_1.0.5             compiler_4.5.3             
+#> [23] desc_1.4.3                  S4Vectors_0.49.2           
+#> [25] lifecycle_1.0.5             compiler_4.6.0             
 #> [27] farver_2.1.2                textshaping_1.0.5          
-#> [29] Seqinfo_1.0.0               codetools_0.2-20           
-#> [31] ComplexHeatmap_2.26.1       clue_0.3-68                
+#> [29] Seqinfo_1.1.0               codetools_0.2-20           
+#> [31] ComplexHeatmap_2.27.1       clue_0.3-68                
 #> [33] htmltools_0.5.9             sass_0.4.10                
 #> [35] yaml_2.3.12                 pkgdown_2.2.0              
 #> [37] pillar_1.11.1               crayon_1.5.3               
 #> [39] jquerylib_0.1.4             cachem_1.1.0               
-#> [41] DelayedArray_0.36.1         iterators_1.0.14           
+#> [41] DelayedArray_0.37.1         iterators_1.0.14           
 #> [43] abind_1.4-8                 foreach_1.5.2              
 #> [45] tidyselect_1.2.1            digest_0.6.39              
 #> [47] dplyr_1.2.1                 labeling_0.4.3             
-#> [49] fastmap_1.2.0               grid_4.5.3                 
+#> [49] fastmap_1.2.0               grid_4.6.0                 
 #> [51] colorspace_2.1-2            cli_3.6.6                  
-#> [53] SparseArray_1.10.10         magrittr_2.0.5             
-#> [55] S4Arrays_1.10.1             withr_3.0.2                
+#> [53] SparseArray_1.11.13         magrittr_2.0.5             
+#> [55] S4Arrays_1.11.1             withr_3.0.2                
 #> [57] scales_1.4.0                rmarkdown_2.31             
-#> [59] XVector_0.50.0              matrixStats_1.5.0          
+#> [59] XVector_0.51.0              matrixStats_1.5.0          
 #> [61] igraph_2.3.0                ragg_1.5.2                 
 #> [63] png_0.1-9                   GetoptLong_1.1.1           
 #> [65] evaluate_1.0.5              knitr_1.51                 
-#> [67] GenomicRanges_1.62.1        IRanges_2.44.0             
+#> [67] GenomicRanges_1.63.2        IRanges_2.45.0             
 #> [69] doParallel_1.0.17           rlang_1.2.0                
-#> [71] glue_1.8.1                  BiocGenerics_0.56.0        
+#> [71] glue_1.8.1                  BiocGenerics_0.57.1        
 #> [73] jsonlite_2.0.0              R6_2.6.1                   
-#> [75] MatrixGenerics_1.22.0       systemfonts_1.3.2          
+#> [75] MatrixGenerics_1.23.0       systemfonts_1.3.2          
 #> [77] fs_2.1.0
 ```

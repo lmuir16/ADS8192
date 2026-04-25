@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Gene Co-expression Network Analysis for Bulk RNA-seq Data • ADS8192</title>
+<title>Gene Co-expression Network Analysis for Bulk RNA-seq Data • corinet</title>
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">ADS8192</a>
+    <a class="navbar-brand me-2" href="index.html">corinet</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
@@ -37,7 +37,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with ADS8192</a></li>
+<li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with corinet</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -46,7 +46,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/lmuir16/ADS8192" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/lmuir16/corinet" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -55,9 +55,9 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="ads8192">ADS8192<a class="anchor" aria-label="anchor" href="#ads8192"></a>
+<div class="page-header"><h1 id="corinet">corinet<a class="anchor" aria-label="anchor" href="#corinet"></a>
 </h1></div>
-<p>ADS8192 provides a lightweight pipeline for building and analyzing gene co-expression networks from bulk RNA-seq data. Starting from a <code>SummarizedExperiment</code> object, the package supports the full workflow from data preparation through network construction, module detection, visualization, and export.</p>
+<p><strong>corinet</strong> provides a lightweight pipeline for building and analyzing gene co-expression networks from bulk RNA-seq data. Starting from a <code>SummarizedExperiment</code> object, the package supports the full workflow from data preparation through network construction, module detection, visualization, and export.</p>
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
@@ -78,15 +78,14 @@
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SummarizedExperiment"</span>, <span class="st">"recount3"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"lmuir16/ADS8192"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"lmuir16/corinet"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="command-line-interface">Command Line Interface<a class="anchor" aria-label="anchor" href="#command-line-interface"></a>
 </h2>
-<p>ADS8192 includes a CLI via <a href="https://github.com/pawelru/Rapp" class="external-link">Rapp</a> for non-interactive use. Install after installing the package:</p>
+<p>corinet includes a CLI via <a href="https://github.com/pawelru/Rapp" class="external-link">Rapp</a> for non-interactive use. Install after installing the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Rapp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rapp/man/install_pkg_cli_apps.html" class="external-link">install_pkg_cli_apps</a></span><span class="op">(</span><span class="st">"ADS8192"</span><span class="op">)</span></span></code></pre></div>
-<p>See the <a href="articles/getting-started.html">Getting Started vignette</a> for usage instructions and example data.</p>
+<code class="sourceCode R"><span><span class="fu">Rapp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rapp/man/install_pkg_cli_apps.html" class="external-link">install_pkg_cli_apps</a></span><span class="op">(</span><span class="st">"corinet"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -97,8 +96,8 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/lmuir16/ADS8192" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/lmuir16/ADS8192/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/lmuir16/corinet" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/lmuir16/corinet/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -114,7 +113,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing ADS8192</a></li>
+<li><a href="authors.html#citation">Citing corinet</a></li>
 </ul>
 </div>
 
