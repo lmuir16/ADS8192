@@ -25,6 +25,8 @@ samples.
 
 ``` r
 library(corinet)
+#> Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by
+#> 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'
 
 data(example_se)
 example_se
@@ -328,7 +330,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] corinet_0.0.0.9000
+#> [1] corinet_0.1.0
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] SummarizedExperiment_1.41.1 gtable_0.3.6               
