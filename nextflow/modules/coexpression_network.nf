@@ -11,8 +11,8 @@ process your_package {
     // Student: adjust the following block based on how your Rapp CLI is designed
     script:
     """
-        ADS8192 network --counts ${counts} --output results/
-        ADS8192 heatmap --counts ${counts} --output results/
-        ADS8192 plot_network --counts ${counts} --output results/
+        corinet network --counts ${counts} --output results/
+        corinet heatmap --counts ${counts} --output results/
+        corinet plot_network --counts ${counts} --output results/
     """
 }

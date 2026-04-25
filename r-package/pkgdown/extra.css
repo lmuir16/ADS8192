@@ -3,30 +3,59 @@ main {
   padding-top: 2rem;
 }
 
-/* Search bar - works in both light and dark mode */
-[data-bs-theme="dark"] .form-control {
-  background-color: #2d2d2d;
-  border-color: #555555;
-  color: #f0f0f0;
-}
-
 /* Push sidebar below navbar */
 .col-md-3 {
   padding-top: 2rem;
 }
 
-[data-bs-theme="dark"] .form-control:focus {
-  background-color: #3a3a3a;
-  border-color: #888888;
+/* Uppercase Articles dropdown to match other navbar items */
+.navbar .dropdown-toggle {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Dark mode */
+
+[data-bs-theme="dark"] body {
+  background-color: #111f4d;
+}
+
+[data-bs-theme="dark"] .navbar {
+  background-color: #0a1840 !important;
+}
+
+[data-bs-theme="dark"] .sidebar {
+  background-color: #152254;
+}
+
+[data-bs-theme="dark"] .card {
+  background-color: #152254;
+  border-color: #1e2d6b;
+}
+
+[data-bs-theme="dark"] footer {
+  background-color: #0a1840;
+}
+
+[data-bs-theme="dark"] .form-control {
+  background-color: #152254;
+  border-color: #1e2d6b;
   color: #f0f0f0;
-  box-shadow: 0 0 0 0.2rem rgba(136, 136, 136, 0.25);
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+  background-color: #1a2860;
+  border-color: #3a4d9e;
+  color: #f0f0f0;
+  box-shadow: 0 0 0 0.2rem rgba(58, 77, 158, 0.25);
 }
 
 [data-bs-theme="dark"] .form-control::placeholder {
-  color: #888888;
+  color: #7a8bbf;
 }
 
-/* Light mode - clean and minimal to match Lux */
+/* Light mode */
+
 [data-bs-theme="light"] .form-control {
   background-color: #f8f9fa;
   border-color: #ced4da;
@@ -42,10 +71,4 @@ main {
 
 [data-bs-theme="light"] .form-control::placeholder {
   color: #6c757d;
-}
-
-/* Uppercase Articles dropdown to match other navbar items */
-.navbar .dropdown-toggle {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }

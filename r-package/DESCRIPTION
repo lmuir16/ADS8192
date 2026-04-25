@@ -1,4 +1,4 @@
-Package: ADS8192
+Package: corinet
 Title: Gene Co-expression Network Analysis for Bulk RNA-seq Data
 Version: 0.0.0.9000
 Authors@R:
@@ -34,5 +34,5 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Config/testthat/edition: 3
-URL: https://lmuir16.github.io/ADS8192/
+URL: https://lmuir16.github.io/corinet/
 VignetteBuilder: knitr

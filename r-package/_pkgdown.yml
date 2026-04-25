@@ -1,10 +1,10 @@
-URL: https://lmuir16.github.io/ADS8192/, https://github.com/lmuir16/ADS8192
+URL: https://lmuir16.github.io/corinet/, https://github.com/lmuir16/corinet
 
 repo:
   url:
-    home: https://github.com/lmuir16/ADS8192
-    source: https://github.com/lmuir16/ADS8192/blob/master/
-    issue: https://github.com/lmuir16/ADS8192/issues/
+    home: https://github.com/lmuir16/corinet
+    source: https://github.com/lmuir16/corinet/blob/master/
+    issue: https://github.com/lmuir16/corinet/issues/
     user: https://github.com/
 
 template:
@@ -18,7 +18,7 @@ home:
   strip_header: false
   links:
   - text: Report a bug
-    href: https://github.com/lmuir16/ADS8192/issues
+    href: https://github.com/lmuir16/corinet/issues
 
 navbar:
   structure:

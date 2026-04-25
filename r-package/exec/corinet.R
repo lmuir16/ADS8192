@@ -1,10 +1,10 @@
 #!/usr/bin/env Rapp
-#| name: ADS8192
+#| name: corinet
 #| title: Gene Co-Expression Network Analysis
 #| description: Build and analyze gene co-expression networks from bulk RNA-seq data.
 
 suppressPackageStartupMessages({
-  library(ADS8192)
+  library(corinet)
   library(utils)
   library(stats)
   library(ggplot2)
@@ -22,6 +22,19 @@ read_data_file <- function(path) {
                       check.names = FALSE)
   }
 }
+
+message("
+
+ ▄▄▄▄  ▄▄▄  ▄▄▄▄  ▄▄ ▄▄  ▄▄ ▄▄▄▄▄ ▄▄▄▄▄▄
+██▀▀▀ ██▀██ ██▄█▄ ██ ███▄██ ██▄▄    ██
+▀████ ▀███▀ ██ ██ ██ ██ ▀██ ██▄▄▄   ██
+
+
+
+
+
+
+                                         ")
 
 switch(
   "",

@@ -1,23 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ADS8192
+# corinet
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/lmuir16/ADS8192/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/R-CMD-check.yaml)
-[![pkgdown](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/ADS8192/actions/workflows/pkgdown.yaml)
+[![R-CMD-check](https://github.com/lmuir16/corinet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lmuir16/corinet/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/lmuir16/corinet/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/corinet/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
-ADS8192 provides a lightweight pipeline for building and analyzing gene
-co-expression networks from bulk RNA-seq data. Starting from a
-`SummarizedExperiment` object, the package supports the full workflow
-from data preparation through network construction, module detection,
-visualization, and export.
+**corinet** provides a lightweight pipeline for building **cor**relation
+**net**works to analyze gene co-expression in bulk RNA-seq data.
+Starting from a `SummarizedExperiment` object, the package supports the
+full workflow from data preparation through network construction, module
+detection, visualization, and export.
 
 ## Installation
 
-ADS8192 requires several Bioconductor dependencies. Install them first:
+corinet requires several Bioconductor dependencies. Install them first:
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -26,22 +26,22 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install(c("SummarizedExperiment", "recount3"))
 ```
 
-Then install ADS8192 from GitHub:
+Then install corinet from GitHub:
 
 ``` r
 # Using pak (recommended)
 install.packages("pak")
-pak::pak("lmuir16/ADS8192")
+pak::pak("lmuir16/corinet")
 
 # Or using devtools
 install.packages("devtools")
-devtools::install_github("lmuir16/ADS8192")
+devtools::install_github("lmuir16/corinet")
 ```
 
 ## Quick Start
 
 ``` r
-library(ADS8192)
+library(corinet)
 
 # Load example GTEx skeletal muscle data
 data(example_se)
@@ -83,11 +83,11 @@ head(hub_genes)
 
 ## Command Line Interface
 
-For non-interactive use, ADS8192 provides a CLI via Rapp. After
+For non-interactive use, corinet provides a CLI via Rapp. After
 installing the package, install the CLI with:
 
 ``` r
-Rapp::install_pkg_cli_apps("ADS8192")
+Rapp::install_pkg_cli_apps("corinet")
 ```
 
 All subcommands accept a genes x samples counts matrix as TSV or CSV
@@ -95,16 +95,16 @@ input:
 
 ``` bash
 # Full network analysis pipeline — exports 6 TSV files
-ADS8192 network --counts counts.tsv --output results/ --n-top 500
+corinet network --counts counts.tsv --output results/ --n-top 500
 
 # Correlation heatmap
-ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+corinet heatmap --counts counts.tsv --output results/ --n-top 500
 
 # Force-directed network graph
-ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+corinet plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
 ```
 
-See `ADS8192 --help` and `ADS8192 <subcommand> --help` for all available
+See `corinet --help` and `corinet <subcommand> --help` for all available
 options.
 
 A small example counts matrix is available at
@@ -113,5 +113,5 @@ purposes.
 
 ## Learn More
 
-See `vignette("getting-started", package = "ADS8192")` for a full
+See `vignette("getting-started", package = "corinet")` for a full
 walkthrough of the pipeline.

@@ -1,4 +1,4 @@
-# R/ADS8192-package.R
+# R/corinet-package.R
 # Rename package later
 
 #' @keywords internal

@@ -1,9 +1,9 @@
 ---
-title: "Getting Started with ADS8192"
+title: "Getting Started with corinet"
 output: rmarkdown::html_vignette
 author: "Liane Muir"
 vignette: >
-  %\VignetteIndexEntry{Getting Started with ADS8192}
+  %\VignetteIndexEntry{Getting Started with corinet}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,8 +17,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-ADS8192 provides a lightweight pipeline for building and analyzing gene
-co-expression networks from bulk RNA-seq data. Starting from a
+**corinet** provides a lightweight pipeline for building **cor**relation **net**works to analyze gene co-expression in bulk RNA-seq data. Starting from a
 `SummarizedExperiment` object, the package supports the full workflow from
 data preparation through network construction, module detection,
 visualization, and export.
@@ -29,7 +28,7 @@ Let's see what the complete pipeline looks like...
 
 ```{r install, eval=FALSE}
 # Install from GitHub
-devtools::install_github("lmuir16/ADS8192")
+devtools::install_github("lmuir16/corinet")
 ```
 
 ## Data Preparation
@@ -38,7 +37,7 @@ The package includes `example_se`, a `SummarizedExperiment` containing GTEx
 skeletal muscle bulk RNA-seq data for 2000 genes across 200 samples.
 
 ```{r load}
-library(ADS8192)
+library(corinet)
 
 data(example_se)
 example_se
@@ -215,11 +214,11 @@ The exported files are:
 
 ## Command Line Interface
 
-For non-interactive use, ADS8192 provides a CLI via Rapp. After installing
+For non-interactive use, corinet provides a CLI via Rapp. After installing
 the package, install the CLI with:
 
 ```r
-Rapp::install_pkg_cli_apps("ADS8192")
+Rapp::install_pkg_cli_apps("corinet")
 ```
 
 The CLI accepts a genes x samples counts matrix as TSV or CSV, with gene
@@ -230,16 +229,16 @@ All subcommands accept the same core arguments:
 
 ```bash
 # Full network analysis pipeline — exports 6 TSV files
-ADS8192 network --counts counts.tsv --output results/ --n-top 500
+corinet network --counts counts.tsv --output results/ --n-top 500
 
-# Correlation heatmap
-ADS8192 heatmap --counts counts.tsv --output results/ --n-top 500
+# Gene correlation heatmap
+corinet heatmap --counts counts.tsv --output results/ --n-top 500
 
 # Force-directed network graph
-ADS8192 plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
+corinet plot-network --counts counts.tsv --output results/ --n-top 500 --n-plot 80
 ```
 
-See `ADS8192 --help` and `ADS8192 <subcommand> --help` for full parameter
+See `corinet --help` and `corinet <subcommand> --help` for full parameter
 documentation including correlation method, threshold, and community
 detection options.
 

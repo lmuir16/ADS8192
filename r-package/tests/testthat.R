@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(ADS8192)
+library(corinet)
 
-test_check("ADS8192")
+test_check("corinet")

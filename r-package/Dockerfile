@@ -1,4 +1,4 @@
-# ADS8192 — R package for gene co-expression networks from bulk RNA-seq
+# corinet — R package for gene co-expression networks from bulk RNA-seq
 # Base: Ubuntu 24.04 LTS
 
 FROM ubuntu:24.04
@@ -44,7 +44,7 @@ RUN Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org")); instal
 
 RUN R CMD INSTALL /ads8192
 
-RUN Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org")); Rapp::install_pkg_cli_apps("ADS8192")'
+RUN Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org")); Rapp::install_pkg_cli_apps("corinet")'
 
 ENV PATH=/root/.local/bin:$PATH
 

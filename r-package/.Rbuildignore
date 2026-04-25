@@ -1,4 +1,4 @@
-^ADS8192\.Rproj$
+^corinet\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^data-raw$
@@ -7,3 +7,6 @@
 ^pkgdown$
 ^\.github$
 ^README\.Rmd$
+^Dockerfile$
+^environment\.yml$
+^index\.md$
