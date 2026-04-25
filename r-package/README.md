@@ -9,8 +9,8 @@
 [![pkgdown](https://github.com/lmuir16/corinet/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/lmuir16/corinet/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
-**corinet** provides a lightweight pipeline for building CORrelation
-NETworks to analyze gene co-expression in bulk RNA-seq data.
+**corinet** provides a lightweight pipeline for building **COR**relation
+**NET**works to analyze gene co-expression in bulk RNA-seq data.
 Starting from a `SummarizedExperiment` object, the package supports the
 full workflow from data preparation through network construction, module
 detection, visualization, and export.
