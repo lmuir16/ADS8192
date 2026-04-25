@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-**corinet** is a lightweight R package for building **cor**relation **net**works 
+**corinet** is a lightweight R package for building **COR**relation **NET**works 
 to analyze gene co-expression in bulk RNA-seq data. Starting from a
 `SummarizedExperiment` object, corinet supports the full workflow from
 data preparation through network construction, module detection,
