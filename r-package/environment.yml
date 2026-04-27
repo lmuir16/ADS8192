@@ -3,10 +3,13 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - r-base
-  - r-ggplot2
-  - r-igraph
-  - bioconductor-complexheatmap
-  - bioconductor-summarizedexperiment
-  - r-devtools
+  - r-base #=4.3.3
+  - r-ggplot2 #=3.5.0
+  - r-igraph #=2.0.3
+  - bioconductor-complexheatmap #=2.18.0
+  - bioconductor-summarizedexperiment #=1.32.1
+  - r-devtools #=2.4.5
 prefix: /home/liane-muir/miniconda3/envs/ads8192
+
+# prefix needed?
+# pinned versions of packages needed?
