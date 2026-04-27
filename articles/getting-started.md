@@ -344,7 +344,7 @@ sessionInfo()
 #> [17] tibble_3.3.1                cluster_2.1.8.2            
 #> [19] pkgconfig_2.0.3             Matrix_1.7-5               
 #> [21] RColorBrewer_1.1-3          S7_0.2.2                   
-#> [23] desc_1.4.3                  S4Vectors_0.49.2           
+#> [23] desc_1.4.3                  S4Vectors_0.49.3           
 #> [25] lifecycle_1.0.5             compiler_4.6.0             
 #> [27] farver_2.1.2                textshaping_1.0.5          
 #> [29] Seqinfo_1.1.0               codetools_0.2-20           
