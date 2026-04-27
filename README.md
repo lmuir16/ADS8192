@@ -17,7 +17,7 @@ visualization, and export.
 ```
 corinet/
 ├── r-package/    # R package source
-└── nextflow/     # Nextflow pipeline for large-scale analysis (under development)
+└── nextflow/     # Nextflow pipeline for large-scale analysis
 ```
 
 ## Features
