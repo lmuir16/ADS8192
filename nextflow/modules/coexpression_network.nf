@@ -1,6 +1,6 @@
 // Run gene network analysis (corinet processes) on counts data
 process run_network {
-    container "hw2-liane-m:0.0.2"
+    container "net-lmuir:0.0.1"
 
     input:
     path counts
@@ -16,7 +16,7 @@ process run_network {
 
 // Plot results (heatmap and network plot)
 process plot_results {
-    container "network-lmuir:0.0.1"
+    container "net-lmuir:0.0.1"
 
     input:
     path counts

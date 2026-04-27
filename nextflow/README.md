@@ -18,7 +18,8 @@ Install prerequisites:
 Build the Docker image:
 
 ```bash
-docker build -t hw2-liane-m:0.0.2 ./r-package
+docker build -t net-lmuir:0.0.1 ./r-package
+docker run --rm net-lmuir:0.0.1 corinet --help
 ```
 
 ## Usage
