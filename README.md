@@ -18,7 +18,10 @@ visualization, and export.
 corinet/
 ├── r-package/    # R package source
 └── nextflow/     # Nextflow pipeline for large-scale analysis
+└── results/      # Final output files from example Nextflow run
+└── work/         # Intermediate Nextflow process files from example run
 ```
+Both the `r-package` and `nextflow` subdirectories contain their own dedicated README files. 
 
 ## Features
 
@@ -43,7 +46,7 @@ pak::pak("lmuir16/corinet")
 
 ## Documentation
 
-Full documentation and a getting started vignette are available at the
+Full documentation and a getting-started vignette are available at the
 [corinet pkgdown site](https://lmuir16.github.io/corinet/).
 
 ## License
