@@ -8,4 +8,4 @@ docs
 inst/doc
 
 .nextflow*
-nextflow/work/
+work/

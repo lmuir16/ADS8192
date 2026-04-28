@@ -21,7 +21,10 @@ corinet/
 └── results/      # Final output files from example Nextflow run
 └── work/         # Intermediate Nextflow process files from example run
 ```
-Both the `r-package` and `nextflow` subdirectories contain their own dedicated README files. 
+Both the `r-package`  and `nextflow` subdirectories contain their own dedicated README files. 
+
+- [r-package/README.md](r-package/README.md)
+- [nextflow/README.md](nextflow/README.md)
 
 ## Features
 
